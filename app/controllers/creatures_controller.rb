@@ -13,10 +13,10 @@ class CreaturesController < ApplicationController
   def create
     creature_params = params.require(:creature).permit(:name, :description)
 
-    creature = Creature.new(creature_params)
-
-    if creature.save
-      redirect_to creature_path(creature)
+    taco = Creature.new(creature_params)
+    creature
+    if taco.save
+      redirect_to creature_path(taco.id)
     end
   end
 
@@ -55,7 +55,7 @@ class CreaturesController < ApplicationController
 
     creature.destroy
 
-    redirect_to creature_path
+    redirect_to creatures_path
   end
 
 end
